@@ -5,3 +5,5 @@ print.html
 # node 관련
 node_modules/
 package*.json
+# 비밀값(액세스 토큰 등) — 절대 커밋 금지
+.env
