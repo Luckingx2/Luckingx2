@@ -1,0 +1,7 @@
+# 빌드 시 자동 다운로드되는 폰트(용량 큼)
+fonts/
+# 빌드 중간 산출물
+print.html
+# node 관련
+node_modules/
+package*.json
