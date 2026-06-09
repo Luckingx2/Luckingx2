@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>초보 직장인 재테크 첫걸음 · 카드뉴스 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Gowun+Dodum&family=Jua&family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1d2b3a; --sub:#5b6b7b; --paper:#fff;
+    --mint:#19c39c; --mint2:#0ea882;
+    --sky:#3d8bff; --sky2:#1f6fe0;
+    --gold:#ffb020; --coral:#ff6b6b; --grape:#7c5cff;
+    --bg:#eef3f8;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    background:var(--bg);
+    font-family:'Noto Sans KR',sans-serif;
+    color:var(--ink);
+    padding:36px 16px 80px;
+    -webkit-font-smoothing:antialiased;
+  }
+  .intro{max-width:1080px; margin:0 auto 30px; text-align:center;}
+  .intro h1{font-family:'Jua',sans-serif; font-size:30px; color:var(--ink);}
+  .intro p{color:var(--sub); margin-top:8px; font-size:15px; line-height:1.6;}
+  .deck{display:flex; flex-direction:column; align-items:center; gap:30px;}
+
+  /* ---- CARD BASE (1080x1080 square) ---- */
+  .card{
+    width:1080px; max-width:96vw; aspect-ratio:1/1;
+    border-radius:34px; overflow:hidden; position:relative;
+    box-shadow:0 24px 60px rgba(20,40,70,.18);
+    background:var(--paper);
+    display:flex; flex-direction:column;
+  }
+  .card .pad{padding:80px 78px; flex:1; display:flex; flex-direction:column; position:relative; z-index:2;}
+  .tag{
+    display:inline-flex; align-items:center; gap:8px; align-self:flex-start;
+    font-weight:700; font-size:24px; padding:12px 26px; border-radius:999px;
+    background:rgba(255,255,255,.22); color:#fff; backdrop-filter:blur(4px);
+  }
+  .pageno{
+    position:absolute; right:64px; bottom:54px; z-index:3;
+    font-family:'Jua',sans-serif; font-size:30px; opacity:.55;
+  }
+  .brand{
+    position:absolute; left:78px; bottom:54px; z-index:3;
+    font-weight:700; font-size:24px; letter-spacing:.5px; opacity:.7;
+  }
+  h2.big{font-family:'Black Han Sans',sans-serif; line-height:1.18; letter-spacing:-1px;}
+
+  /* blobs / deco */
+  .blob{position:absolute; border-radius:50%; filter:blur(2px); opacity:.9; z-index:1;}
+  .ring{position:absolute; border-radius:50%; border:14px solid rgba(255,255,255,.18); z-index:1;}
+
+  /* ===== CARD 1 COVER ===== */
+  .c-cover{background:linear-gradient(150deg,#0ea882 0%,#19c39c 45%,#3d8bff 105%); color:#fff;}
+  .c-cover .pad{justify-content:center; align-items:flex-start;}
+  .c-cover h2.big{font-size:96px;}
+  .c-cover .lead{font-size:34px; font-weight:500; margin-top:30px; line-height:1.5; opacity:.95;}
+  .coin{position:absolute; z-index:1;}
+
+  /* ===== generic content card ===== */
+  .c-light{background:#ffffff;}
+  .kicker{font-family:'Jua',sans-serif; font-size:30px; color:var(--mint2); margin-bottom:14px;}
+  h2.title{font-family:'Black Han Sans',sans-serif; font-size:62px; line-height:1.15; letter-spacing:-1.5px; color:var(--ink); margin-bottom:8px;}
+  .desc{font-size:30px; line-height:1.65; color:var(--sub); margin-top:18px; font-weight:500;}
+  .hl{color:var(--mint2); font-weight:700;}
+  .hl-sky{color:var(--sky2); font-weight:700;}
+  .hl-coral{color:var(--coral); font-weight:700;}
+
+  /* number callout */
+  .stat-row{display:flex; gap:26px; margin-top:auto;}
+  .stat{flex:1; background:#f3f8f6; border-radius:24px; padding:32px 28px; border:2px solid #e4efe9;}
+  .stat .n{font-family:'Black Han Sans',sans-serif; font-size:64px; color:var(--mint2); line-height:1;}
+  .stat .l{font-size:23px; color:var(--sub); margin-top:12px; font-weight:600;}
+
+  /* steps */
+  .steps{display:flex; flex-direction:column; gap:24px; margin-top:36px;}
+  .step{display:flex; align-items:center; gap:30px; background:#f6f9fc; border-radius:24px; padding:30px 34px;}
+  .step .circ{width:96px; height:96px; flex:0 0 96px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-family:'Black Han Sans',sans-serif; font-size:48px; color:#fff;}
+  .step .txt b{font-size:34px; display:block; margin-bottom:4px;}
+  .step .txt span{font-size:25px; color:var(--sub); font-weight:500; line-height:1.4;}
+
+  /* compare table */
+  .vs{display:flex; gap:0; margin-top:30px; border-radius:26px; overflow:hidden; box-shadow:0 10px 30px rgba(20,40,70,.10);}
+  .vs .col{flex:1; padding:40px 34px;}
+  .vs .a{background:linear-gradient(160deg,#19c39c,#0ea882); color:#fff;}
+  .vs .b{background:linear-gradient(160deg,#3d8bff,#1f6fe0); color:#fff;}
+  .vs h3{font-family:'Jua',sans-serif; font-size:42px; margin-bottom:6px;}
+  .vs .sm{font-size:22px; opacity:.9; margin-bottom:24px; font-weight:500;}
+  .vs ul{list-style:none; display:flex; flex-direction:column; gap:18px;}
+  .vs li{font-size:25px; line-height:1.4; padding-left:38px; position:relative; font-weight:500;}
+  .vs li::before{content:"✓"; position:absolute; left:0; font-weight:900;}
+
+  .note{font-size:20px; color:#92a1b0; margin-top:26px; line-height:1.5;}
+  .pill{display:inline-block; background:var(--gold); color:#5a3d00; font-weight:800; font-size:24px; padding:8px 22px; border-radius:999px; margin-bottom:18px;}
+
+  /* bars */
+  .bars{display:flex; align-items:flex-end; gap:50px; margin:40px auto; height:380px; padding:0 30px;}
+  .bar{flex:1; display:flex; flex-direction:column; align-items:center; justify-content:flex-end; height:100%;}
+  .bar .fill{width:150px; border-radius:20px 20px 0 0; display:flex; align-items:flex-start; justify-content:center; padding-top:20px; color:#fff; font-family:'Black Han Sans',sans-serif; font-size:40px;}
+  .bar .cap{margin-top:18px; font-size:27px; font-weight:700; text-align:center; line-height:1.3;}
+  .bar .cap small{display:block; font-size:21px; color:var(--sub); font-weight:500; margin-top:4px;}
+
+  @media (max-width:1120px){
+    .card .pad{padding:6vw;}
+    .c-cover h2.big{font-size:8.5vw;}
+    .c-cover .lead{font-size:3.1vw;}
+    h2.title{font-size:5.6vw;}
+    .kicker{font-size:2.8vw;}
+    .desc{font-size:2.8vw;}
+    .stat .n{font-size:6vw;} .stat .l{font-size:2.1vw;}
+    .step .txt b{font-size:3.1vw;} .step .txt span{font-size:2.3vw;}
+    .step .circ{width:8.5vw;height:8.5vw;flex-basis:8.5vw;font-size:4.4vw;}
+    .vs h3{font-size:3.9vw;} .vs li{font-size:2.3vw;} .vs .sm{font-size:2vw;}
+    .tag{font-size:2.2vw;} .pageno{font-size:2.8vw;} .brand{font-size:2.2vw;}
+    .bars{height:34vw;} .bar .fill{width:14vw; font-size:3.6vw;} .bar .cap{font-size:2.5vw;}
+    .pill{font-size:2.2vw;} .note{font-size:1.9vw;}
+  }
+  .print-tip{max-width:1080px;margin:50px auto 0;text-align:center;color:#90a0b0;font-size:13px;line-height:1.7;}
+</style>
+</head>
+<body>
+
+<div class="intro">
+  <h1>💰 초보 직장인 재테크 첫걸음 — 카드뉴스 2026</h1>
+  <p>"월급은 들어오는데 왜 안 모이지?" 대학생도 이해하는 가장 쉬운 재테크 10장<br>
+  요즘 트렌드(2026년 6월 출시 청년형 ISA·청년미래적금)까지 한 번에!</p>
+</div>
+
+<div class="deck">
+
+  <!-- ============ CARD 1 : COVER ============ -->
+  <section class="card c-cover">
+    <svg class="coin" style="top:9%;right:8%;width:160px" viewBox="0 0 100 100"><circle cx="50" cy="50" r="46" fill="#ffd54a" stroke="#f5a623" stroke-width="5"/><text x="50" y="68" font-size="52" text-anchor="middle" fill="#b8740a" font-family="Black Han Sans">₩</text></svg>
+    <svg class="coin" style="bottom:16%;right:18%;width:108px;opacity:.92" viewBox="0 0 100 100"><circle cx="50" cy="50" r="46" fill="#ffe27a" stroke="#f5a623" stroke-width="5"/><text x="50" y="66" font-size="46" text-anchor="middle" fill="#b8740a" font-family="Black Han Sans">$</text></svg>
+    <div class="blob" style="width:240px;height:240px;background:rgba(255,255,255,.12);bottom:-60px;left:-50px"></div>
+    <div class="ring" style="width:300px;height:300px;top:-90px;left:-70px"></div>
+    <div class="pad">
+      <span class="tag">📈 사회초년생 필수 상식</span>
+      <h2 class="big" style="margin-top:30px;">월급은 들어오는데<br>왜 안 모이지?</h2>
+      <p class="lead">대학생도 이해하는<br><b>가장 쉬운 재테크 첫걸음</b> 💸</p>
+    </div>
+    <div class="brand">@재테크 첫걸음 · 2026</div>
+    <div class="pageno">01</div>
+  </section>
+
+  <!-- ============ CARD 2 : 통장 쪼개기 ============ -->
+  <section class="card c-light">
+    <div class="pad">
+      <div class="kicker">STEP 1 · 돈에 이름표 붙이기</div>
+      <h2 class="title">통장 3개로<br>나눠보세요 🗂️</h2>
+      <p class="desc">월급이 한 통장에 다 있으면 <span class="hl-coral">무조건 새어나가요.</span><br>용도별로 쪼개면 자동으로 관리됩니다.</p>
+      <div class="steps">
+        <div class="step"><div class="circ" style="background:var(--mint)">💳</div><div class="txt"><b>① 월급 통장</b><span>들어오자마자 아래 둘로 자동이체</span></div></div>
+        <div class="step"><div class="circ" style="background:var(--sky)">🏦</div><div class="txt"><b>② 저축·투자 통장</b><span>먼저 빼두는 '미래의 나'를 위한 돈</span></div></div>
+        <div class="step"><div class="circ" style="background:var(--gold)">🍔</div><div class="txt"><b>③ 생활비 통장</b><span>남은 돈 = 이번 달 쓸 수 있는 한도</span></div></div>
+      </div>
+    </div>
+    <div class="brand">@재테크 첫걸음</div>
+    <div class="pageno">02</div>
+  </section>
+
+  <!-- ============ CARD 3 : 선저축 후지출 50/30/20 ============ -->
+  <section class="card c-light">
+    <div class="pad">
+      <div class="kicker">STEP 2 · 황금 비율</div>
+      <h2 class="title">쓰고 남기지 말고<br>먼저 떼어두기 ✂️</h2>
+      <p class="desc"><span class="hl">"선(先)저축 후(後)지출"</span> — 월급날 저축부터 자동이체!<br>초보는 <span class="hl-sky">50 : 30 : 20</span> 비율로 시작해보세요.</p>
+      <div style="display:flex; gap:30px; align-items:center; margin-top:40px;">
+        <svg width="320" height="320" viewBox="0 0 42 42">
+          <circle cx="21" cy="21" r="15.915" fill="#fff"/>
+          <circle cx="21" cy="21" r="15.915" fill="transparent" stroke="#3d8bff" stroke-width="9" stroke-dasharray="50 50" stroke-dashoffset="25"/>
+          <circle cx="21" cy="21" r="15.915" fill="transparent" stroke="#ffb020" stroke-width="9" stroke-dasharray="30 70" stroke-dashoffset="75"/>
+          <circle cx="21" cy="21" r="15.915" fill="transparent" stroke="#19c39c" stroke-width="9" stroke-dasharray="20 80" stroke-dashoffset="45"/>
+        </svg>
+        <div style="display:flex; flex-direction:column; gap:24px; flex:1;">
+          <div style="display:flex; align-items:center; gap:18px;"><span style="width:30px;height:30px;border-radius:8px;background:#3d8bff;display:inline-block"></span><span style="font-size:30px;font-weight:700">50% 꼭 쓰는 돈 <small style="color:#8896a4;font-weight:500;font-size:23px">(월세·교통·밥)</small></span></div>
+          <div style="display:flex; align-items:center; gap:18px;"><span style="width:30px;height:30px;border-radius:8px;background:#ffb020;display:inline-block"></span><span style="font-size:30px;font-weight:700">30% 쓰고 싶은 돈 <small style="color:#8896a4;font-weight:500;font-size:23px">(취미·여가)</small></span></div>
+          <div style="display:flex; align-items:center; gap:18px;"><span style="width:30px;height:30px;border-radius:8px;background:#19c39c;display:inline-block"></span><span style="font-size:30px;font-weight:700">20% 저축·투자 <small style="color:#8896a4;font-weight:500;font-size:23px">(미래의 나)</small></span></div>
+        </div>
+      </div>
+    </div>
+    <div class="brand">@재테크 첫걸음</div>
+    <div class="pageno">03</div>
+  </section>
+
+  <!-- ============ CARD 4 : 복리 + 72의 법칙 ============ -->
+  <section class="card c-light" style="background:linear-gradient(160deg,#fff,#f1f8ff);">
+    <div class="pad">
+      <div class="kicker" style="color:var(--sky2)">STEP 3 · 돈이 돈을 버는 마법</div>
+      <h2 class="title">복리(複利)를<br>친구로 만들기 🪄</h2>
+      <p class="desc">이자에 또 이자가 붙는 게 <span class="hl-sky">복리</span>.<br>시간이 지날수록 눈덩이처럼 불어나요. ⛄</p>
+      <div style="margin-top:36px; background:#fff; border:3px solid #d7e8ff; border-radius:26px; padding:38px 40px;">
+        <div style="font-family:'Jua',sans-serif; font-size:38px; color:var(--sky2); margin-bottom:14px;">📐 72의 법칙</div>
+        <p style="font-size:30px; line-height:1.6; font-weight:500; color:var(--ink)">내 돈이 <b>2배</b>가 되는 데 걸리는 시간 =<br><span style="font-family:'Black Han Sans'; font-size:44px; color:var(--coral)">72 ÷ 수익률(%)</span></p>
+        <p style="font-size:25px; color:var(--sub); margin-top:18px; line-height:1.5;">예) 연 6% 상품 → 72÷6 = <b style="color:var(--sky2)">12년</b> 뒤에 원금이 2배!</p>
+      </div>
+    </div>
+    <div class="brand">@재테크 첫걸음</div>
+    <div class="pageno">04</div>
+  </section>
+
+  <!-- ============ CARD 5 : 일찍 시작의 힘 ============ -->
+  <section class="card c-light">
+    <div class="pad">
+      <div class="kicker" style="color:var(--coral)">가장 강력한 무기 = 시간 ⏳</div>
+      <h2 class="title">10년 먼저 시작 →<br>2배 차이 납니다</h2>
+      <p class="desc">매달 같은 돈을 넣어도 <span class="hl-coral">일찍 시작</span>하면<br>복리 덕분에 결과가 완전히 달라져요.</p>
+      <div class="bars">
+        <div class="bar"><div class="fill" style="height:46%;background:linear-gradient(#7fb6ff,#3d8bff)">1.5억</div><div class="cap">35세 시작<small>같은 금액·같은 수익률</small></div></div>
+        <div class="bar"><div class="fill" style="height:100%;background:linear-gradient(#2fe0b8,#0ea882)">3.8억</div><div class="cap">25세 시작<small>10년 일찍 출발</small></div></div>
+      </div>
+      <p class="note">※ 매달 100만원·연 8% 가정 시 40세 시점 비교(예시). 실제 수익률은 변동될 수 있어요.</p>
+    </div>
+    <div class="brand">@재테크 첫걸음</div>
+    <div class="pageno">05</div>
+  </section>
+
+  <!-- ============ CARD 6 : 트렌드 청년형 ISA ============ -->
+  <section class="card c-light" style="background:linear-gradient(160deg,#0ea882,#19c39c); color:#fff;">
+    <div class="blob" style="width:280px;height:280px;background:rgba(255,255,255,.12);top:-70px;right:-60px"></div>
+    <div class="pad">
+      <span class="pill">🔥 2026 핫트렌드</span>
+      <h2 class="title" style="color:#fff;">청년형 ISA,<br>세금 아끼는 만능통장 💎</h2>
+      <p class="desc" style="color:rgba(255,255,255,.95)">한 계좌 안에서 예금·펀드·주식까지 담고<br><b style="color:#fff8d6">이자·배당에 붙는 세금을 깎아주는</b> 절세 계좌예요.</p>
+      <div class="stat-row" style="margin-top:40px;">
+        <div class="stat" style="background:rgba(255,255,255,.16);border-color:rgba(255,255,255,.25)"><div class="n" style="color:#fff">19~34세</div><div class="l" style="color:rgba(255,255,255,.92)">가입 가능 나이</div></div>
+        <div class="stat" style="background:rgba(255,255,255,.16);border-color:rgba(255,255,255,.25)"><div class="n" style="color:#fff8d6">최대1,000만</div><div class="l" style="color:rgba(255,255,255,.92)">비과세 한도(서민형)</div></div>
+        <div class="stat" style="background:rgba(255,255,255,.16);border-color:rgba(255,255,255,.25)"><div class="n" style="color:#fff">저율과세</div><div class="l" style="color:rgba(255,255,255,.92)">초과분도 9.9% 분리과세</div></div>
+      </div>
+    </div>
+    <div class="brand" style="opacity:.85">@재테크 첫걸음</div>
+    <div class="pageno" style="opacity:.7">06</div>
+  </section>
+
+  <!-- ============ CARD 7 : 청년미래적금 ============ -->
+  <section class="card c-light" style="background:linear-gradient(160deg,#1f6fe0,#3d8bff); color:#fff;">
+    <div class="ring" style="width:320px;height:320px;bottom:-110px;left:-90px"></div>
+    <div class="pad">
+      <span class="pill" style="background:#fff;color:#1f6fe0;">🗓️ 6/22 출시! 신청 ~7/3</span>
+      <h2 class="title" style="color:#fff;">청년미래적금<br>나라가 보태주는 적금 🎁</h2>
+      <p class="desc" style="color:rgba(255,255,255,.95)">내가 저축하면 <b style="color:#fff8d6">정부가 6~12%를 얹어주는</b><br>3년 만기 적금. 월 최대 50만원까지!</p>
+      <div class="steps" style="margin-top:34px;">
+        <div class="step" style="background:rgba(255,255,255,.16)"><div class="circ" style="background:#fff;color:#1f6fe0">💪</div><div class="txt" style="color:#fff"><b style="color:#fff">우대형 +12% / 일반형 +6%</b><span style="color:rgba(255,255,255,.9)">소득이 적을수록 더 많이 지원</span></div></div>
+        <div class="step" style="background:rgba(255,255,255,.16)"><div class="circ" style="background:#fff;color:#1f6fe0">🏆</div><div class="txt" style="color:#fff"><b style="color:#fff">3년 뒤 최대 약 2,200만원</b><span style="color:rgba(255,255,255,.9)">내 돈 1,800만 + 정부지원 + 이자</span></div></div>
+      </div>
+    </div>
+    <div class="brand" style="opacity:.85">@재테크 첫걸음</div>
+    <div class="pageno" style="opacity:.7">07</div>
+  </section>
+
+  <!-- ============ CARD 8 : 비교 ============ -->
+  <section class="card c-light">
+    <div class="pad">
+      <div class="kicker">둘 중 뭐 고르지? 🤔</div>
+      <h2 class="title">ISA vs 청년미래적금</h2>
+      <div class="vs">
+        <div class="col a">
+          <h3>청년형 ISA</h3>
+          <div class="sm">불리고 싶은 사람</div>
+          <ul>
+            <li>예금·펀드·주식 굴리기</li>
+            <li>세금 절약 + 복리</li>
+            <li>유연하게 운용 가능</li>
+            <li>"투자로 키울래"</li>
+          </ul>
+        </div>
+        <div class="col b">
+          <h3>청년미래적금</h3>
+          <div class="sm">안전하게 모으는 사람</div>
+          <ul>
+            <li>정부 지원금 6~12%</li>
+            <li>원금 안전한 적금</li>
+            <li>3년 목돈 만들기</li>
+            <li>"꾸준히 모을래"</li>
+          </ul>
+        </div>
+      </div>
+      <p class="note">※ 두 상품은 중복 가입이 제한될 수 있어요. 소득·자격 조건은 신청 전 꼭 확인! 안전 저축형이면 적금, 절세·투자형이면 ISA.</p>
+    </div>
+    <div class="brand">@재테크 첫걸음</div>
+    <div class="pageno">08</div>
+  </section>
+
+  <!-- ============ CARD 9 : 연금저축/IRP 세액공제 ============ -->
+  <section class="card c-light" style="background:linear-gradient(160deg,#fff,#f5f1ff);">
+    <div class="pad">
+      <div class="kicker" style="color:var(--grape)">놓치면 손해 · 13월의 월급 🎅</div>
+      <h2 class="title">연금저축 + IRP<br>= 세금 돌려받기</h2>
+      <p class="desc">노후 대비로 넣은 돈의 일부를 <span style="color:var(--grape);font-weight:700">연말정산 때 현금으로</span><br>돌려받아요. 사실상 확정 수익!</p>
+      <div class="stat-row" style="margin-top:40px;">
+        <div class="stat" style="background:#f3eeff;border-color:#e4d9ff"><div class="n" style="color:var(--grape)">최대900만</div><div class="l">연간 납입 세액공제 한도<br>(연금저축 600+IRP 포함)</div></div>
+        <div class="stat" style="background:#f3eeff;border-color:#e4d9ff"><div class="n" style="color:var(--grape)">13~16.5%</div><div class="l">돌려받는 비율<br>(소득 낮을수록 ↑)</div></div>
+      </div>
+      <p class="note" style="margin-top:30px;">예) 연 600만원 넣고 16.5% 적용 → <b style="color:var(--grape)">약 99만원</b>을 연말정산으로 환급! 단, 만 55세 이후 연금으로 받는 장기상품이에요.</p>
+    </div>
+    <div class="brand">@재테크 첫걸음</div>
+    <div class="pageno">09</div>
+  </section>
+
+  <!-- ============ CARD 10 : 마무리 로드맵 ============ -->
+  <section class="card c-cover" style="background:linear-gradient(150deg,#1f6fe0 0%,#19c39c 100%);">
+    <div class="blob" style="width:260px;height:260px;background:rgba(255,255,255,.12);bottom:-70px;right:-50px"></div>
+    <div class="pad" style="justify-content:center;">
+      <span class="tag">🚀 오늘부터 3단계</span>
+      <h2 class="big" style="font-size:68px; margin-top:24px;">작게 시작해서<br>꾸준히! 💪</h2>
+      <div class="steps" style="margin-top:40px;">
+        <div class="step" style="background:rgba(255,255,255,.18)"><div class="circ" style="background:#fff;color:#1f6fe0">1</div><div class="txt" style="color:#fff"><b style="color:#fff">통장 쪼개고 자동이체</b><span style="color:rgba(255,255,255,.92)">월급날 저축부터 먼저 빼두기</span></div></div>
+        <div class="step" style="background:rgba(255,255,255,.18)"><div class="circ" style="background:#fff;color:#1f6fe0">2</div><div class="txt" style="color:#fff"><b style="color:#fff">청년 상품 챙기기</b><span style="color:rgba(255,255,255,.92)">ISA·청년미래적금 자격 확인</span></div></div>
+        <div class="step" style="background:rgba(255,255,255,.18)"><div class="circ" style="background:#fff;color:#1f6fe0">3</div><div class="txt" style="color:#fff"><b style="color:#fff">세액공제로 절세</b><span style="color:rgba(255,255,255,.92)">여유되면 연금저축·IRP 추가</span></div></div>
+      </div>
+      <p style="color:#fff; font-size:30px; font-weight:700; margin-top:36px;">💚 저장하고 한 달에 하나씩 실천하기!</p>
+    </div>
+    <div class="brand">@재테크 첫걸음 · 2026</div>
+    <div class="pageno">10</div>
+  </section>
+
+</div>
+
+<p class="print-tip">
+  📌 사용법: 브라우저로 열어 보거나, 각 카드를 캡처해 인스타·블로그 카드뉴스로 올리세요. (카드 1장 = 1080×1080 정사각형)<br>
+  ⚠️ 본 콘텐츠는 교육용 정보이며 투자 권유가 아닙니다. 상품 조건·자격·세율은 시점에 따라 달라질 수 있으니 가입 전 공식 자료를 확인하세요.
+</p>
+
+</body>
+</html>
