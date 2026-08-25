@@ -1,0 +1,12 @@
+name: NanoBananaPro
+duration: still image
+sections:
+  - name: SUBJECT & ACTION
+    guidance: User subject and action.
+  - name: SCREEN CONTENT
+    guidance: Describe composition, placement, visual hierarchy, and visible details.
+  - name: ENVIRONMENT
+    guidance: Describe location, atmosphere, lighting context, and spatial continuity.
+  - name: STYLE
+    guidance: Define the requested visual language and quality; avoid noise, JPEG artifact, VHS, vignette, timestamp.
+
