@@ -1,0 +1,12 @@
+default_model: ${AI_CONTENT_MODEL:-claude-opus-4-1}
+max_tokens: 8000
+log_dir: ${AI_CONTENT_LOG_DIR:-logs}
+approval:
+  local_analysis: auto
+  local_draft: auto
+  file_edit: worktree_only
+  git_commit: explicit
+  git_push: explicit
+  pull_request: explicit
+  external_publish: explicit
+
