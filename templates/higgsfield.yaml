@@ -1,0 +1,16 @@
+name: Higgsfield
+duration: 3-15 seconds
+sections:
+  - name: SUBJECT
+    guidance: User subject and action.
+  - name: VISUAL MODE
+    guidance: Explicitly lock anime, live action, or other rendering mode.
+  - name: CAMERA
+    guidance: Choose one primary camera move and reinforce its direction and speed.
+  - name: MOTION
+    guidance: Start instantly and avoid sluggish or floaty movement.
+  - name: ENVIRONMENT
+    guidance: Preserve the source composition and background continuity.
+  - name: NEGATIVE RULES
+    guidance: No style conversion, identity drift, delayed motion, morphing, extra limbs, text, watermark, noise, JPEG artifact, VHS, vignette, timestamp.
+
