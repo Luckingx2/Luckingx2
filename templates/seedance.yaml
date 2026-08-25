@@ -1,0 +1,20 @@
+name: Seedance
+duration: 3-15 seconds
+sections:
+  - name: SUBJECT
+    guidance: User subject and action.
+  - name: STYLE
+    guidance: Define cinematic realism or the requested animation language.
+  - name: FILM LOOK
+    guidance: Define lens behavior, exposure, color science, grain, and dynamic range.
+  - name: ENVIRONMENT
+    guidance: Preserve spatial, weather, lighting, and background continuity.
+  - name: CAMERA
+    guidance: Define a continuous one-take camera path unless cuts are explicitly required.
+  - name: SCENE
+    guidance: Provide timestamped choreography and immediate movement.
+  - name: AUDIO
+    guidance: Define synchronized dialogue, ambience, effects, and music.
+  - name: TEXT RULES
+    guidance: No generated captions, logos, watermarks, timestamps, or unintended on-screen text.
+
