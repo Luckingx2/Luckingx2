@@ -1,0 +1,26 @@
+name: Kling AI 3.0
+duration: 3-15 seconds
+sections:
+  - name: VIDEO FORMAT
+    guidance: Define duration, aspect ratio, resolution, and image-to-video mode.
+  - name: CHARACTER LOCK
+    guidance: Preserve identity, costume, proportions, face, and element tags throughout.
+  - name: VISUAL STYLE
+    guidance: Define the cinematic or anime rendering style without unintended photoreal conversion.
+  - name: ENVIRONMENT
+    guidance: Preserve location, lighting, scale, weather, and spatial continuity.
+  - name: CAMERA SYSTEM
+    guidance: State lens, framing, aggressive movement, tracking direction, and camera continuity.
+  - name: MOTION CONTROL
+    guidance: Motion begins at 0.0 seconds; use fast, decisive actions with no slow startup or floaty motion.
+  - name: SUBJECT
+    guidance: User subject and action.
+  - name: SCENE
+    guidance: Use timestamped choreography from 0.0 seconds through the final frame.
+  - name: EFFECT PRIORITY
+    guidance: Rank essential impacts, particles, energy, debris, and environmental reactions.
+  - name: AUDIO
+    guidance: Specify dialogue, impacts, ambience, music cues, and synchronization.
+  - name: NEGATIVE RULES
+    guidance: No delayed start, slow running, identity drift, extra limbs, camera reset, frozen frames, morphing, text, watermark, noise, JPEG artifact, VHS, vignette, timestamp.
+
